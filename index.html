@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeGen</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload=init()>
+    <header class="main-header main-container">
+        <div class="main-screen" onclick="toggleMenu()"></div>
+        <div class="flex space-between align-center">
+        <div class="logo">memegen</div>
+        <ul class="main-nav clean-list flex space-between">
+            <li>Gallery</li>
+            <li>About</li>
+        </ul>
+        </header>
+        <div class="gallery grid">
+            <img id="0" src="img/1.jpg" onclick=drawImage(this)>
+            <img id="1" src="img/2.jpg" onclick=drawImage(this)>
+            <img id="2" src="img/3.jpg" onclick=drawImage(this)>
+            <img id="3" src="img/4.jpg" onclick=drawImage(this)>
+            <img id="4" src="img/5.jpg" onclick=drawImage(this)>
+            <img id="5" src="img/6.jpg" onclick=drawImage(this)>
+            <img id="6" src="img/7.jpg" onclick=drawImage(this)>
+            <img id="7" src="img/8.jpg" onclick=drawImage(this)>
+            <img id="8" src="img/9.jpg" onclick=drawImage(this)>
+            <img id="9" src="img/10.jpg" onclick=drawImage(this)>
+            <img id="10" src="img/11.jpg" onclick=drawImage(this)>
+            <img id="11" src="img/12.jpg" onclick=drawImage(this)>
+            <img id="12" src="img/13.jpg" onclick=drawImage(this)>
+            <img id="13" src="img/14.jpg" onclick=drawImage(this)>
+            <img id="14" src="img/15.jpg" onclick=drawImage(this)>
+            <img id="15" src="img/16.jpg" onclick=drawImage(this)>
+            <img id="16" src="img/17.jpg" onclick=drawImage(this)>
+            <img id="17" src="img/18.jpg" onclick=drawImage(this)>
+        </div>
+        <main class="main-canvas">
+        <div class="canvas-container">
+            <canvas id="my-canvas" width="500" height="500" style="outline:1px solid" onclick="getText(event)"></canvas>
+        </div>
+        <div class="about">
+            <div class="my-image">
+                <img src="img/profile.jpeg" alt=""><img>
+            </div>
+            <div class="about-me">
+                <h2>Ran Porath</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, velit! Harum quia nihil illum sunt minima sequi dignissimos maxime dicta!</p>
+                <ul class="social-links clean-list flex">
+                    <li><a class="linkedin" href="#"></a></li>
+                    <li><a class="facebook" href="#"></a></li>
+                    <li><a class="github" href="#"></a></li>
+                </ul>
+            </div>
+          
+        </div>
+        <footer class="main-footer">
+            <div class="footer-container main-container flex space-between align-center">
+                <div class="logo">memegen</div>
+                <div class="copyright">all rights reserved 2021</div>
+            </div>
+        </footer> 
+    </main>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+</html>
