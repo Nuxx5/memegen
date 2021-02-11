@@ -12,7 +12,7 @@
 <body onload=init()>
     <header class="main-header main-container">
         <div class="main-header flex space-between align-center">
-            <div class="logo">memegen</div>
+            <div class="logo" onclick="location.reload();">memegen</div>
             <ul class="main-nav clean-list flex space-around">
                 <li class="nav-item"><a href="javascript:showGallery();">Gallery</a></li>
                 <li class="nav-item"><a href="javascript:showAbout();">About</a></li>
@@ -42,9 +42,16 @@
         <img id="18" src="img/18.jpg" onclick=drawImage(this)>
         </div>
     </section>
-    <section class="main-canvas hidden">
+    <section class="main-canvas flex space-between align-center hidden">
         <div class="canvas-container">
             <canvas id="my-canvas" width="500" height="500" style="outline:1px solid" onclick="getText(event)"></canvas>
+        </div>
+        <div class="text-input">
+            <input placeholder="type your meme text" type="text" class="text" id="text" oninput="drawText(this.value)">
+        </div>
+        <div class="grid toolbox">
+            
+
         </div>
         </section>
         <div class="about main-container flex align-center space-around">
@@ -64,7 +71,7 @@
         </div>
         <footer class="main-footer">
             <div class="footer-container main-container flex column space-between align-center">
-                <div class="logo">memegen</div>
+                <div class="logo" onclick="location.reload();">memegen</div>
                 <div class="copyright">all rights reserved 2021</div>
             </div>
         </footer>

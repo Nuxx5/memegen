@@ -42,6 +42,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 30px;
     padding: 20px;
 }
+
+.logo:hover {
+cursor: pointer;
+}
 /* LAYOUT */
 
 .main-header {
@@ -76,6 +80,14 @@ h1, h2, h3, h4, h5, h6 {
     background-color:#ff7f00;
 }
 
+.canvas-container {
+    margin-right: 200px;
+    /* margin-left: 100px; */
+}
+
+.toolbox {
+    /* margin-top: 60px; */
+}
 /* Components */
 
 .main-header {
@@ -136,8 +148,11 @@ img:hover {
 }
 
 /* Grid Helpers */
+.grid {
+    display: grid;
+}
 
-.grid-container {
+.images {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-auto-rows: auto;
@@ -175,4 +190,20 @@ img:hover {
 
 .hidden {
     display: none;
+}
+
+.toolbox {
+grid-template-columns: repeat(5, 90px) ;
+grid-template-rows: repeat(4, 90px);
+gap: 15px;
+text-align: center;
+grid-template-areas:
+"text text text text text"
+". switch-line add-line delete-line ."
+"incFont decFont alignL alignC alignR"
+". . download . .";
+}
+
+.text {
+    grid-area: text;
 }
