@@ -1,3 +1,20 @@
+/* FONTS */
+
+@font-face {
+    font-family: Montserrat-regular;
+    src: url(../fonts/Montserrat/Montserrat-Regular.ttf)
+}
+
+@font-face {
+    font-family: Montserrat-thin;
+    src: url(../fonts/Montserrat/Montserrat-Thin.ttf)
+}
+
+@font-face {
+    font-family: Impact-regular;
+    src: url(../fonts/Impact/impact.ttf)
+}
+
 /* BASICS */
 
 * {
@@ -5,7 +22,8 @@
 }
 
 html {
-font-family: 🇲🇸 ;
+font-family: Montserrat-regular ;
+font-size: 20;
 color: #FFFFFF;
 }
 
@@ -15,10 +33,28 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
+    font-size: 25px;
     margin: 0 0;
 }
 
+.logo {
+    font-family: Impact-regular;
+    font-size: 30px;
+}
 /* LAYOUT */
+
+.main-header {
+    /* max-width: 1100px; */
+    margin-left: 50px;
+    margin-right: 50px;
+    /* padding-top: 25px;
+    padding-bottom: 25px; */
+}
+
+.main-header .main-nav>*:not(:last-child) {
+    /* margin-inline-end: 90px; */
+    border-right: solid 1px #1d1d1d;
+}
 
 .main-container {
     /* max-width: 1100px; */
@@ -56,6 +92,10 @@ img:hover {
     margin-left: 50px;
     margin-right: 50px;
 }
+.my-image img {
+    border-radius: 50%;
+    height: 320px;
+}
 /* Helpers */
 
 /* Flex Helpers */
@@ -80,6 +120,9 @@ img:hover {
     justify-content: space-around;
 }
 
+.flex.justify-end {
+    justify-content: flex-end;
+}
 .column {
     flex-direction: column;
 }
@@ -106,4 +149,18 @@ img:hover {
 
 .list-item {
     height: 100%;
+}
+
+.main-nav a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 30px;
+}
+.copyright {
+    font-family: Montserrat-thin;
 }
