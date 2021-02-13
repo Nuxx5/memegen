@@ -14,6 +14,7 @@ var gFillColor = 'white';
 var gFontType = 'Impact';
 var gFontSize = 55;
 gMeme.selectedLineIdx = 0;
+var gSavedMemes = [];
 
 function init() {
     console.log('hi');
@@ -167,6 +168,12 @@ function downloadImg(elLink) {
     elLink.download = 'meme';
 }
 
+function saveImg(){
+    const data = gElCanvas.toDataURL();
+    var imgHTML = `<img src="${data}" alt="">`;
+    gSavedMemes.push(imgHTML);
+    saveToStorage('memes', gSavedMemes);
+}
 // share meme
 
 function uploadImg(elForm, ev) {
