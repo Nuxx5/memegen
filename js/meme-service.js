@@ -22,9 +22,24 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [{
-        txt: 'I never eat Falafel', size: 20,
+        txt: '',
+        size: 20,
         align: 'left',
         color: 'red',
-        font: 20
+        fontSize: '55',
+        pos: { x: 250, y: 100 }
+    }]
+}
+
+var gMeme = {
+    selectedImgId: 5,
+    selectedLineIdx: 1,
+    lines: [{
+        txt: '',
+        size: 20,
+        align: 'left',
+        color: 'red',
+        fontSize: '55',
+        pos: { x: 250, y: 450 }
     }]
 }

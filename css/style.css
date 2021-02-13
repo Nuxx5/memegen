@@ -22,9 +22,9 @@
 }
 
 html {
-font-family: Montserrat-regular ;
-font-size: 20;
-color: #FFFFFF;
+    font-family: Montserrat-regular;
+    font-size: 20;
+    color: #FFFFFF;
 }
 
 body {
@@ -44,8 +44,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo:hover {
-cursor: pointer;
+    cursor: pointer;
 }
+
 /* LAYOUT */
 
 .main-header {
@@ -61,9 +62,11 @@ cursor: pointer;
     margin-right: 50px;
     padding: 30px 60px;
 }
+
 .main-header .main-nav>*:not(:last-child) {
     /* margin-inline-end: 90px; */
-    border-right: solid 1px #8a8a8a;;
+    border-right: solid 1px #8a8a8a;
+    ;
 }
 
 .main-container {
@@ -77,7 +80,7 @@ cursor: pointer;
 .main-footer {
     margin-left: 50px;
     margin-right: 50px;
-    background-color:#ff7f00;
+    background-color: #ff7f00;
 }
 
 .canvas-container {
@@ -85,15 +88,12 @@ cursor: pointer;
     /* margin-left: 100px; */
 }
 
-.toolbox {
-    /* margin-top: 60px; */
-}
 /* Components */
 
 .main-header {
     /* height: 130px; */
     color: #FFFFFF;
-    background-color:#ff7f00;
+    background-color: #ff7f00;
     box-shadow: inset 0 -6px 0 #ff7f00;
 }
 
@@ -112,10 +112,12 @@ img:hover {
     padding-top: 80px;
     padding-bottom: 160px;
 }
+
 .my-image img {
     border-radius: 50%;
     height: 320px;
 }
+
 /* Helpers */
 
 /* Flex Helpers */
@@ -143,11 +145,13 @@ img:hover {
 .flex.justify-end {
     justify-content: flex-end;
 }
+
 .column {
     flex-direction: column;
 }
 
 /* Grid Helpers */
+
 .grid {
     display: grid;
 }
@@ -158,9 +162,7 @@ img:hover {
     grid-auto-rows: auto;
     justify-content: center;
     gap: 20px;
-
 }
-
 
 /* List Helpers */
 
@@ -184,6 +186,7 @@ img:hover {
     color: #FFFFFF;
     padding: 30px;
 }
+
 .copyright {
     font-family: Montserrat-thin;
 }
@@ -192,18 +195,176 @@ img:hover {
     display: none;
 }
 
-.toolbox {
-grid-template-columns: repeat(5, 90px) ;
-grid-template-rows: repeat(4, 90px);
-gap: 15px;
-text-align: center;
-grid-template-areas:
-"text text text text text"
-". switch-line add-line delete-line ."
-"incFont decFont alignL alignC alignR"
-". . download . .";
+button {
+    width: 50px;
+    height: 50px;
+    background-size: 100%;
+    border-style: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+button:hover {
+    cursor:pointer;
+}
+
+.edit-buttons {
+    grid-template-columns: repeat(5, 90px);
+    grid-template-rows: repeat(4, 90px);
+    gap: 15px;
+    text-align: center;
+    grid-template-areas: ". switch-line add-line delete-line ." "increase-font decrease-font align-left align-center align-right" "font-type font-type font-type stroke-color fill-color" ". download . share .";
+}
+
+.switch-line-btn {
+    grid-area: switch-line;
+}
+
+.add-line-btn {
+    grid-area: add-line;
+}
+
+.delete-line-btn {
+    grid-area: delete-line;
+}
+
+.increase-font-btn {
+    grid-area: increase-font;
+}
+
+.decrease-font-btn {
+    grid-area: decrease-font;
+}
+
+.align-left-btn {
+    grid-area: align-left;
+}
+
+.align-center-btn {
+    grid-area: align-center;
+}
+
+.align-right-btn {
+    grid-area: align-right;
+}
+
+.stroke-color {
+    grid-area: stroke-color;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.stroke-color-input {
+    /* padding: 22px;
+margin-bottom: 10px; */
+    border-radius: 12px;
+    background-color: #ffffff;
+    border-style: none;
+    /* height:20px;
+    margin:0; */
+    /* padding-left: 30px; */
+}
+
+/* 
+.stroke-color-image {
+    position:absolute;
+    bottom:8px;
+    left:10px;
+    width:10px;
+    height:10px;
+} */
+
+.fill-color {
+    grid-area: fill-color;
+}
+
+.fill-color-input {
+    border-radius: 12px;
+    background-color: #ffffff;
+    border-style: none;
 }
 
 .text {
-    grid-area: text;
+    width: 500px;
+    height: 20px;
+    color: #000000;
+    font-family: Montserrat-regular;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+    padding: 22px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border-style: none;
+}
+
+.font-type {
+    grid-area: font-type;
+    height: 60px;
+    color: #000000;
+    font-family: Montserrat-regular;
+    font-size: 15px;
+    padding: 22px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border-style: none;
+}
+
+.download {
+    grid-area: download;
+    color: #ffffff;
+    font-family: Montserrat-regular;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    text-align: center;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    border-radius: 12px;
+    background-color: #ff7f00;
+    border-style: none;
+}
+
+.download-btn {
+    font-family: Montserrat-regular;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #ff7f00;
+    text-align: center;
+}
+
+.share {
+    grid-area: share;
+    color: #ffffff;
+    font-family: Montserrat-regular;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    text-align: center;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    border-radius: 12px;
+    background-color: #ff7f00;
+    border-style: none;
+}
+
+.share:hover {
+    cursor: pointer;
+}
+.share-btn {
+    font-family: Montserrat-regular;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #ff7f00;
+    text-align: center;
 }

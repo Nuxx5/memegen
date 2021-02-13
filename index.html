@@ -21,60 +21,89 @@
         </div>
     </header>
     <section class="main-container gallery">
-    <div class="main-container images grid-container">
-        <img id="1" src="img/1.jpg" onclick=drawImage(this)>
-        <img id="2" src="img/2.jpg" onclick=drawImage(this)>
-        <img id="3" src="img/3.jpg" onclick=drawImage(this)>
-        <img id="4" src="img/4.jpg" onclick=drawImage(this)>
-        <img id="5" src="img/5.jpg" onclick=drawImage(this)>
-        <img id="6" src="img/6.jpg" onclick=drawImage(this)>
-        <img id="7" src="img/7.jpg" onclick=drawImage(this)>
-        <img id="8" src="img/8.jpg" onclick=drawImage(this)>
-        <img id="9" src="img/9.jpg" onclick=drawImage(this)>
-        <img id="10" src="img/10.jpg" onclick=drawImage(this)>
-        <img id="11" src="img/11.jpg" onclick=drawImage(this)>
-        <img id="12" src="img/12.jpg" onclick=drawImage(this)>
-        <img id="13" src="img/13.jpg" onclick=drawImage(this)>
-        <img id="14" src="img/14.jpg" onclick=drawImage(this)>
-        <img id="15" src="img/15.jpg" onclick=drawImage(this)>
-        <img id="16" src="img/16.jpg" onclick=drawImage(this)>
-        <img id="17" src="img/17.jpg" onclick=drawImage(this)>
-        <img id="18" src="img/18.jpg" onclick=drawImage(this)>
+        <div class="main-container images grid-container">
+            <img id="1" src="img/1.jpg" onclick=drawImage(this)>
+            <img id="2" src="img/2.jpg" onclick=drawImage(this)>
+            <img id="3" src="img/3.jpg" onclick=drawImage(this)>
+            <img id="4" src="img/4.jpg" onclick=drawImage(this)>
+            <img id="5" src="img/5.jpg" onclick=drawImage(this)>
+            <img id="6" src="img/6.jpg" onclick=drawImage(this)>
+            <img id="7" src="img/7.jpg" onclick=drawImage(this)>
+            <img id="8" src="img/8.jpg" onclick=drawImage(this)>
+            <img id="9" src="img/9.jpg" onclick=drawImage(this)>
+            <img id="10" src="img/10.jpg" onclick=drawImage(this)>
+            <img id="11" src="img/11.jpg" onclick=drawImage(this)>
+            <img id="12" src="img/12.jpg" onclick=drawImage(this)>
+            <img id="13" src="img/13.jpg" onclick=drawImage(this)>
+            <img id="14" src="img/14.jpg" onclick=drawImage(this)>
+            <img id="15" src="img/15.jpg" onclick=drawImage(this)>
+            <img id="16" src="img/16.jpg" onclick=drawImage(this)>
+            <img id="17" src="img/17.jpg" onclick=drawImage(this)>
+            <img id="18" src="img/18.jpg" onclick=drawImage(this)>
         </div>
     </section>
     <section class="main-canvas flex space-between align-center hidden">
         <div class="canvas-container">
             <canvas id="my-canvas" width="500" height="500" style="outline:1px solid" onclick="getText(event)"></canvas>
         </div>
-        <div class="text-input">
-            <input placeholder="type your meme text" type="text" class="text" id="text" oninput="drawText(this.value)">
+        <div class="toolbox flex column">
+            <div class="text-input flex column">
+                <input placeholder="type your meme text" type="text" class="text" id="text"
+                    oninput="drawText(this.value)">
+            </div>
+            <div class="edit-buttons grid">
+                <button class="switch-line-btn" onclick="switchLine()"><img src="img/ICONS/rsz_up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="add-line-btn" onclick="addLine()"><img src="img/ICONS/rsz_1add.png"></button>
+                <button class="delete-line-btn" onclick="deleteLine()"><img src="img/ICONS/rsz_1trash.png"></button>
+                <button class="increase-font-btn" onclick="increaseFont()"><img src="img/ICONS/rsz_increase_font_-_icon.png"></button>
+                <button class="decrease-font-btn" onclick="decreaseFont()"><img src="img/ICONS/rsz_decrease_font_-_icon.png"></button>
+                <button class="align-left-btn" onclick="alignLeft()"><img src="img/ICONS/rsz_1align-to-left.png"></button>
+                <button class="align-center-btn" onclick="alignCenter()"><img src="img/ICONS/rsz_center-text-alignment.png"></button>
+                <button class="align-right-btn" onclick="alignRight()"><img src="img/ICONS/rsz_align-to-right.png"></button>
+                <select onchange="changeFont(this.value)" class="font-type" name="font" id="font">
+                    <option value="Impact">Impact</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="San Francisco">San Francisco</option>
+                </select>
+                <div class= "stroke-color"> 
+                    <img src="img/ICONS/rsz_text_stroke.png" class="stroke-color-image">
+                    <input onchange="changeStrokeColor(this.value)" type="color" name="strokeColor" class="stroke-color-input">
+                    
+                </div>
+                <div class="fill-color">
+                    <img src="img/ICONS/rsz_paint-board-and-brush.png" class="fill-color-image">
+                <input onchange="changeFillColor(this.value)" type="color" class= "fill-color-input" name="fillColor" id="fillColor" img src="img/ICONS/paint-board-and-brush.png">
+                </div>
+                <a href="" class="download" onclick="downloadImg(this)"><button class="download-btn">Get</button>
+                </a>
+                <form class="share" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="share-btn" type="submit">Share</button>
+                </form>
+            </div>
         </div>
-        <div class="grid toolbox">
-            
+    </section>
+    <div class="about main-container flex align-center space-around">
+        <div class="my-image justify-end">
+            <img src="img/ran.jpg" alt=""><img>
+        </div>
+        <div id="about" class="about-me">
+            <h2>Ran Porath</h2>
+            <p>Ran is a 2021 Coding Academy student and a soon to be full-stack developer</p>
+            <!-- <ul class="social-links clean-list flex">
+                <li><a class="linkedin" href="#">Linkedin</a></li>
+                <li><a class="facebook" href="#">Facebook</a></li>
+                <li><a class="github" href="#">Github</a></li>
+            </ul> -->
+        </div>
 
+    </div>
+    <footer class="main-footer">
+        <div class="footer-container main-container flex column space-between align-center">
+            <div class="logo" onclick="location.reload();">memegen</div>
+            <div class="copyright">all rights reserved 2021</div>
         </div>
-        </section>
-        <div class="about main-container flex align-center space-around">
-            <div class="my-image justify-end">
-                <img src="img/ran.jpg" alt=""><img>
-            </div>
-            <div id="about" class="about-me">
-                <h2>Ran Porath</h2>
-                <p>Ran is a 2021 Coding Academy alumn and a junior Full-Stack developer</p>
-                <ul class="social-links clean-list flex">
-                    <li><a class="linkedin" href="#">Linkedin</a></li>
-                    <li><a class="facebook" href="#">Facebook</a></li>
-                    <li><a class="github" href="#">Github</a></li>
-                </ul>
-            </div>
-
-        </div>
-        <footer class="main-footer">
-            <div class="footer-container main-container flex column space-between align-center">
-                <div class="logo" onclick="location.reload();">memegen</div>
-                <div class="copyright">all rights reserved 2021</div>
-            </div>
-        </footer>
+    </footer>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>

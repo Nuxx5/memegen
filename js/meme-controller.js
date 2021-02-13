@@ -1,20 +1,25 @@
 'use strict'
+// define global variables for canvas
 
 var gElCanvas;
 var gCtx;
 var gCurrImage;
 var gPos = {
-    x: 50,
+    x: 250,
     y: 100
 };
-var gTextAlign = 'left';
-var gColor = 'purple';
+var gTextAlign = 'center';
+var gStrokeColor = 'none';
+var gFillColor = 'white';
 var gFontType = 'Impact';
 var gFontSize = 55;
+gMeme.selectedLineIdx = 0;
 
 function init() {
-console.log('hi')
+    console.log('hi');
 }
+
+// load the selected image on the canvas
 
 function drawImage(image) {
     gCurrImage = image;
@@ -27,35 +32,145 @@ function drawImage(image) {
     gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
+// draw text on canvas
+
 function drawText(txt) {
-    gMeme.lines[0] = {
+    gMeme.lines[gMeme.selectedLineIdx] = {
         txt: txt,
         align: gCtx.textAlign,
         color: gCtx.strokeStyle,
-        font: 55
+        fontSize: gCtx.font,
+        pos: { x: gPos.x, y: gPos.y }
     };
+    renderCanvas();
+}
+
+// switch between text lines
+
+function switchLine() {
+    if (gMeme.selectedLineIdx === 0) {
+        gMeme.selectedLineIdx = 1;
+        gPos = { x: 250, y: 450 };
+        document.getElementById('text').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    }
+    else {
+        gMeme.selectedLineIdx = 0;
+        gPos = { x: 250, y: 100 };    
+        document.getElementById('text').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    }
+}
+
+function addLine() { }
+
+function deleteLine() { }
+
+function increaseFont() {
+    gFontSize += 5;
+    renderCanvas();
+}
+
+function decreaseFont() {
+    gFontSize -= 5;
+    renderCanvas();
+}
+
+function alignLeft() {
+    gTextAlign = 'left';
+    renderCanvas();
+}
+
+function alignCenter() {
+    gTextAlign = 'center';
+    renderCanvas();
+}
+
+function alignRight() {
+    gTextAlign = 'right';
+    renderCanvas();
+}
+
+function changeFont(font) {
+    gFontType = font;
+    renderCanvas();
+}
+
+function changeStrokeColor(color) {
+    gStrokeColor = color;
+    renderCanvas();
+}
+
+function changeFillColor(color) {
+    gFillColor = color;
     renderCanvas();
 }
 
 function renderCanvas() {
     clearCanvas();
-    gCtx.strokeText(gMeme.lines[0].txt, gPos.x, gPos.y);
-    gCtx.textAlign = gTextAlign;
-    gCtx.strokeStyle = gColor;
-    gCtx.font = gFontSize + 'px ' + gFontType;
+    gMeme.lines.forEach(line => {
+        gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+        gCtx.strokeText(gMeme.lines[gMeme.selectedLineIdx].txt, gPos.x, gPos.y);
+        gCtx.strokeStyle = gStrokeColor;
+        gCtx.fillStyle = gFillColor;
+        gCtx.font = gFontSize + 'px ' + gFontType;
+        gCtx.textAlign = gTextAlign;
+        // gCurrImage.addEventListener("load", function() {
+        //     gCtx.textAlign = gTextAlign;
+        // });
+    });
 }
+
+// clear the canvas
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.drawImage(gCurrImage, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
+// show About section
+
 function showAbout() {
     document.querySelector('.about').classList.remove('hidden');
     document.querySelector('section.gallery').classList.add('hidden');
 }
 
+// show Gallery section
+
 function showGallery() {
     document.querySelector('section.gallery').classList.remove('hidden');
     document.querySelector('section.main-canvas').classList.add('hidden');
+}
+
+// download the meme
+
+function downloadImg(elLink) {
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'meme';
+}
+
+// share meme
+
+function uploadImg(elForm, ev) {
+    ev.preventDefault();
+    document.getElementById('imgData').value = gElCanvas.toDataURL("image/jpeg");
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
+    }
+    doUploadImg(elForm, onSuccess);
+}
+
+function doUploadImg(elForm, onSuccess) {
+    var formData = new FormData(elForm);
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(function (res) {
+            return res.text()
+        })
+        .then(onSuccess)
+        .catch(function (err) {
+            console.error(err)
+        })
 }
