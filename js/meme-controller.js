@@ -48,21 +48,40 @@ function drawText(txt) {
 // switch between text lines
 
 function switchLine() {
-    if (gMeme.selectedLineIdx === 0) {
-        gMeme.selectedLineIdx = 1;
-        gPos = { x: 250, y: 450 };
-        document.getElementById('text').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    if (gMeme.lines.length === 2) {
+        if (gMeme.selectedLineIdx === 0) {
+            gMeme.selectedLineIdx = 1;
+            document.getElementById('text').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+            gPos = { x: 250, y: 450 };
+        }
+        else {
+            gMeme.selectedLineIdx = 0;
+            document.getElementById('text').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+            gPos = { x: 250, y: 100 };
+        }
     }
     else {
         gMeme.selectedLineIdx = 0;
-        gPos = { x: 250, y: 100 };    
         document.getElementById('text').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+        gPos = { x: 250, y: 100 };
     }
 }
 
-function addLine() { }
+function addLine() {
+    if (gMeme.lines.length === 2) return;
+    gMeme.selectedLineIdx = 1;
+    document.getElementById('text').value = '';
+    gPos = {
+        x: 250,
+        y: 450
+    };
+ }
 
-function deleteLine() { }
+function deleteLine() {
+    document.getElementById('text').value = '';
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    renderCanvas();
+}
 
 function increaseFont() {
     gFontSize += 5;
