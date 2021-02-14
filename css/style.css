@@ -97,6 +97,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: inset 0 -6px 0 #ff7f00;
 }
 
+.menu-btn {
+    display: none;
+}
+
 .gallery, .main-canvas {
     background-color: #e3e3e3;
 }
@@ -205,7 +209,7 @@ button {
 }
 
 button:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .edit-buttons {
@@ -332,6 +336,7 @@ margin-bottom: 10px; */
 }
 
 .download-btn {
+    width: 100%;
     font-family: Montserrat-regular;
     font-size: 15px;
     color: #ffffff;
@@ -361,7 +366,9 @@ margin-bottom: 10px; */
 .share:hover {
     cursor: pointer;
 }
+
 .share-btn {
+    width: 100%;
     font-family: Montserrat-regular;
     font-size: 15px;
     color: #ffffff;
@@ -370,6 +377,7 @@ margin-bottom: 10px; */
 }
 
 .save-btn {
+    width: 100%;
     grid-area: save;
     font-family: Montserrat-regular;
     font-size: 15px;
@@ -379,31 +387,127 @@ margin-bottom: 10px; */
     padding: 10px;
 }
 
-@media (max-width:900px) {
-    body {
-        width: 100vw;
+@media only screen and (max-width: 1670px) {
+    /* .main-canvas {
+        height: 460px;
     }
+    .canvas-container {
+        height: 400px;
+    } */
+    
+    /* .text-input {
+        height: 42px;
+        width: 270px;
+        margin-bottom: 15px;
+    } */
+    .images {
+        grid-template-columns: repeat(2, auto);
+    }
+}
 
-    .main-header .main-container {
-        flex-direction: column;
-    }
-    .main-container .gallery {
-        width: 100vw;
-    }
-    .grid-container {
-        grid-template-columns: repeat(2,1fr);
-        grid-auto-rows: auto;
-    }
-    img {
-        width: 100%;
+@media only screen and (max-width: 1380px) {
+canvas {
+    width: 420px;
+    height: 420px;
+}
+.canvas-container {
+    margin-right: 0;
+}
+}
+
+
+@media only screen and (max-width: 1180px) {
+    .images {
+        grid-template-columns: repeat(1, auto);
     }
     .main-canvas {
-    margin-top: 20px;
-    height: 50vh;
-    flex-direction: column;
-    align-items: center;
+        flex-direction: column;
     }
-    .main-footer {
-        height: 50px;
+    .toolbox {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .main-header .main-nav {
+        position: fixed;
+        right: 0;
+        top: 0;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #FF7F00;
+        width: 140px;
+        transform: translateX(100%);
+        box-shadow: none;
+        transition: transform .8s, box-shadow .8s;
+    }
+    .main-header.main-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .main-nav.clean-list {
+        justify-content: unset;
+    }
+    .main-nav .nav-item {
+        width: 100%;
+        height: 60px;
+        border-right: none;
+        border-left: none;
+        color: #ffffffe0;
+        box-shadow: #040A2C 0px -1px inset;
+    }
+    .main-screen {
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 30%);
+        transition: opacity 0.8s;
+        cursor: pointer;
+    }
+    .menu-btn {
+        display: block;
+    }
+    body.menu-open .main-nav {
+        transform: translateX(0);
+    }
+    body.menu-open .main-screen {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+@media only screen and (max-width: 630px) {
+    .images>* {
+        width: 300px;
+        height: 300px;
+    }
+    .about  {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .about-me {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .edit-buttons {
+        grid-template-columns: repeat(5, 60px);
+        grid-template-rows: repeat(4, 60px);
+        align-items: center;
+        justify-content: center;
+        grid-template-areas: ". switch-line add-line delete-line ." "increase-font decrease-font align-left align-center align-right" "font-type font-type font-type stroke-color fill-color" "download download share share save";
+    }
+    .text {
+        width: 350px;
+        margin-bottom: 15px;
+    }
+    canvas {
+        width: 320px;
+        height: 320px;
     }
 }

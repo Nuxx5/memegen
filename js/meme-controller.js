@@ -127,12 +127,12 @@ function changeFillColor(color) {
 function renderCanvas() {
     clearCanvas();
     gMeme.lines.forEach(line => {
-        gCtx.fillText(line.txt, line.pos.x, line.pos.y);
-        gCtx.strokeText(gMeme.lines[gMeme.selectedLineIdx].txt, gPos.x, gPos.y);
         gCtx.strokeStyle = gStrokeColor;
         gCtx.fillStyle = gFillColor;
         gCtx.font = gFontSize + 'px ' + gFontType;
         gCtx.textAlign = gTextAlign;
+        gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+        gCtx.strokeText(gMeme.lines[gMeme.selectedLineIdx].txt, gPos.x, gPos.y);
         // gCurrImage.addEventListener("load", function() {
         //     gCtx.textAlign = gTextAlign;
         // });
@@ -199,4 +199,8 @@ function doUploadImg(elForm, onSuccess) {
         .catch(function (err) {
             console.error(err)
         })
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
 }

@@ -10,6 +10,7 @@
 </head>
 
 <body onload=init()>
+    <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="main-header main-container">
         <div class="main-header flex space-between align-center">
             <div class="logo" onclick="location.reload();">memegen</div>
@@ -19,6 +20,7 @@
 
             </ul>
         </div>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
     <section class="main-container gallery">
         <div class="main-container images grid-container">
@@ -67,14 +69,14 @@
                 </select>
                 <div class= "stroke-color"> 
                     <img src="img/ICONS/rsz_text_stroke.png" class="stroke-color-image">
-                    <input onchange="changeStrokeColor(this.value)" type="color" name="strokeColor" class="stroke-color-input">
+                    <input oninput="changeStrokeColor(this.value)" type="color" name="strokeColor" class="stroke-color-input">
                     
                 </div>
                 <div class="fill-color">
                     <img src="img/ICONS/rsz_paint-board-and-brush.png" class="fill-color-image">
-                <input onchange="changeFillColor(this.value)" type="color" class= "fill-color-input" name="fillColor" id="fillColor" img src="img/ICONS/paint-board-and-brush.png">
+                <input oninput="changeFillColor(this.value)" type="color" class= "fill-color-input" name="fillColor" id="fillColor" img src="img/ICONS/paint-board-and-brush.png">
                 </div>
-                <a href="" class="download" onclick="downloadImg(this)"><button class="download-btn">Get</button>
+                <a href="" class="download" onclick="downloadImg(this)"><button class="download-btn">Download</button>
                 </a>
                 <form class="share" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                     <input name="img" id="imgData" type="hidden" />
